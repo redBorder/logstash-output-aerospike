@@ -55,8 +55,7 @@ class LogStash::Outputs::Aerospike < LogStash::Outputs::Base
       rescue Aerospike::Exceptions::Aerospike => ex
         @logger.error(ex.message)
       end
-      # filter_matched should go in the last line of our successful code
-      filter_matched(event)
+
     end
   end  # def filter(event)
 end # class LogStash::Filters::Aerospike
