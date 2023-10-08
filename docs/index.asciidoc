@@ -1,0 +1,92 @@
+:plugin: example
+:type: filter
+
+///////////////////////////////////////////
+START - GENERATED VARIABLES, DO NOT EDIT!
+///////////////////////////////////////////
+:version: %VERSION%
+:release_date: %RELEASE_DATE%
+:changelog_url: %CHANGELOG_URL%
+:include_path: ../../../../logstash/docs/include
+///////////////////////////////////////////
+END - GENERATED VARIABLES, DO NOT EDIT!
+///////////////////////////////////////////
+
+[id="plugins-{type}s-{plugin}"]
+
+== logstash-output-aerospike
+
+=== Example output plugin
+
+[,logstash]
+----
+output{
+  aerospike {
+    aerospike_server => 'localhost:3000'
+    aerospike_namespace => 'namespace'
+    aerospike_set => 'set'
+    key_field => "[hash]"
+    list_of_keys => ["fb_clamscan","fb_metascan"]
+  }
+}
+----
+
+=== Description
+
+This is an example of Logstash output plugin for Aerospike. This filter save data in Aerospike Database.
+
+https://aerospike.com/
+
+[id="plugins-{type}s-{plugin}-options"]
+==== Filter Configuration Options
+
+[cols="<,<,<",options="header",]
+|=======================================================================
+|Setting |Input type|Required
+| <<plugins-{type}s-{plugin}-aerospike_server>> |String|No
+| <<plugins-{type}s-{plugin}-aerospike_namespace>> |String|No
+| <<plugins-{type}s-{plugin}-aerospike_set>> |String|No
+| <<plugins-{type}s-{plugin}-key_field>> |String|No
+| <<plugins-{type}s-{plugin}-list_of_keys>> |Array|Yes
+|=======================================================================
+
+[id="plugins-{type}s-{plugin}-aerospike_server"]
+===== `aerospike_server`
+
+* Value type is `String`.
+* Default value is `""`
+
+Aerospike server in the form "host:port".
+
+[id="plugins-{type}s-{plugin}-aerospike_namespace"]
+===== `aerospike_namespace`
+
+* Value type is `String`.
+* Default value is `"malware"`
+
+Namespace is a Database name in Aerospike.
+
+[id="plugins-{type}s-{plugin}-aerospike_set"]
+===== `aerospike_set`
+
+* Value type is `String`.
+* Default value is `"hashScores"`
+
+Set in Aerospike is similar to table in a relational database.
+
+[id="plugins-{type}s-{plugin}-key_field"]
+===== `key_field`
+
+* Value type is `String`.
+* Default value is `"[hash]"`
+
+Logstash event field (key) where the JSON is going to be located.
+
+[id="plugins-{type}s-{plugin}-list_of_keys"]
+===== `list_of_keys`
+
+* Value type is `Array`.
+
+List of keys to store in Aerospike
+
+[id="plugins-{type}s-{plugin}-common-options"]
